@@ -29,7 +29,7 @@ CREATE TABLE orders (
 CREATE TABLE payments (
     payment_id INTEGER PRIMARY KEY AUTOINCREMENT,
     order_id INTEGER,
-    amount DECIMAL(10, 2) NOT NULL,
+    amount DECIMAL(11, 2) NOT NULL,
     payment_date DATE NOT NULL,
     method TEXT NOT NULL,
     FOREIGN KEY (order_id) REFERENCES orders(order_id)
