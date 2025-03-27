@@ -105,4 +105,4 @@ LEFT JOIN payments p ON o.order_id = p.order_id
 WHERE p.payment_id IS NULL;
 
 -- Query 10: List Products with Stock Less Than 50
-SELECT * FROM products WHERE stock_qty < 50;
+SELECT * FROM products WHERE stock_qty < 51;
