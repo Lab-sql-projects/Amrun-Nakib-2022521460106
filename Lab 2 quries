@@ -1,0 +1,31 @@
+-- 1. INNER JOIN Query
+SELECT o.order_id, o.order_date, o.status, c.name AS customer_name, c.email AS customer_email
+FROM orders o
+INNER JOIN customers c ON o.customer_id = c.customer_id;
+
+-- 2. LEFT JOIN Query
+SELECT o.order_id, o.order_date, o.status, p.amount, p.payment_date, p.method
+FROM orders o
+LEFT JOIN payments p ON o.order_id = p.order_id;
+
+-- 3. UPDATE Query
+UPDATE orders
+SET status = 'shipped'
+WHERE status = 'pending' AND order_id = 4;
+
+-- 4. DELETE Query
+DELETE FROM orders
+WHERE status = 'cancelled';
+
+-- 5. Aggregation Query (GROUP BY, HAVING)
+SELECT o.customer_id, SUM(p.amount) AS total_spent
+FROM payments p
+INNER JOIN orders o ON p.order_id = o.order_id
+GROUP BY o.customer_id
+HAVING SUM(p.amount) > 500;
+
+-- 6. Subquery Example
+SELECT o.order_id, p.amount
+FROM orders o
+INNER JOIN payments p ON o.order_id = p.order_id
+WHERE p.amount > (SELECT AVG(amount) FROM payments);
